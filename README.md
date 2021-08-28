@@ -1,4 +1,6 @@
 # tuxfetch🐧
+
+1. Clone the Repository
 ```sh
 git clone https://github.com/atharvaamritkar/tuxfetch
 cd tuxfetch
