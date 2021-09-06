@@ -3,13 +3,16 @@ use std::process::Command;
 use sysinfo::{ComponentExt, ProcessorExt, System, SystemExt};
 use termion::{cursor::DetectCursorPos, raw::IntoRawMode};
 fn main() {
-    //iinitialize
+   
+    
+    //initialize
     let mut sys = System::new_all();
     let mut stdout = std::io::stdout().into_raw_mode().unwrap();
     sys.refresh_all();
 
     //tux
     println!("{}",RGB(70, 130, 180).paint("         .LINUS.\r\n        $GENTOO$     ,\"\"\"\"\"\"\"\"\"\"\"\"\"\".\r\n       @portage@|    | Linux Rules! |\r\n       M|@||@) M|   _;..............\'\r\n       @,-----,@| -\'\r\n      C ^\\__/^ rust\r\n     aur        arch\r\n    rpm          suse\r\n   deb            enos\r\n   MMM            MMMM\r\n   MMM            MMMM\r\n __| \".        |\\OS\"vim\r\n |    `.       | `\' \\al\r\n/     \\.______.|     .\'\r\n\\____  |Windows|   .\'Imma\r\n     `-\'       `--\' god") );
+    
     //coordinates
     let x_coord = 45;
     let mut y_coord = stdout.cursor_pos().unwrap().1;
@@ -50,7 +53,7 @@ fn main() {
         sys.kernel_version().unwrap()
     );
 
-    // //5]Up-Time
+    //5]Up-Time
     y_coord = y_coord + 1;
     println!(
         "{}{}    : {} \r",
@@ -68,7 +71,7 @@ fn main() {
         nixinfo::terminal().unwrap()
     );
 
-    // //8]wm
+    //7]wm
     y_coord = y_coord + 1;
     let wm = Command::new("sh").arg("wm.sh").output().expect(" ");
     println!(
@@ -79,7 +82,7 @@ fn main() {
         String::from_utf8_lossy(&wm.stdout)
     );
 
-    //10]cpu
+    //8]cpu
     y_coord = y_coord + 1;
     println!(
         "{}{}       : {}\r",
@@ -96,7 +99,7 @@ fn main() {
         nixinfo::gpu().unwrap()
     );
 
-    //15]Usage
+    //9]Usage
     y_coord = y_coord + 1;
     let mut usage = 0;
 
@@ -109,7 +112,7 @@ fn main() {
         Red.bold().paint("|Usage"),
         usage / sys.processors().len()
     );
-    //11]Cores
+    //10]Cores
     y_coord = y_coord + 1;
     println!(
         "{}{}     : {}\r",
@@ -118,7 +121,7 @@ fn main() {
         sys.processors().len()
     );
 
-    //12]Temperature
+    //11]Temperature
     y_coord = y_coord + 1;
     for component in sys.components() {
         if component.label().contains("Package id") {
@@ -133,7 +136,7 @@ fn main() {
         }
     }
 
-    //13]RAM
+    //12]RAM
     y_coord = y_coord + 1;
     println!(
         "{}{}       : {}MB/{}MB\r",
@@ -143,7 +146,7 @@ fn main() {
         sys.total_memory() / 1024
     );
 
-    //14]Swap
+    //13]Swap
     y_coord = y_coord + 1;
     if sys.total_swap() == 0 {
         println!(" ");
