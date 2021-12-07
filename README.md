@@ -21,5 +21,7 @@ cp target/release/tuxfetch ~/.local/bin/tuxfetch
 tuxfetch
 ```
 
+## [Crates.io link](https://crates.io/crates/tuxfetch)
+
 ![Screenshot 1](./ss.png)
 
