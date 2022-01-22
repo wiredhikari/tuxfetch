@@ -2,7 +2,7 @@
 
 1. Clone the Repository
 ```sh
-git clone https://github.com/atharvaamritkar/tuxfetch
+git clone https://github.com/wiredhikari/tuxfetch
 cd tuxfetch
 ```
 
